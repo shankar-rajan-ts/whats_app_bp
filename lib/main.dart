@@ -1,4 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/screens/message_report/message_details.dart';
+import 'package:whatsapp/screens/message_report/message_report_page.dart';
+import 'package:whatsapp/screens/nav-bar/chats/chat_page.dart';
+import 'package:whatsapp/screens/home/contact_page/add%20_contact_page.dart';
+import 'package:whatsapp/screens/home/contact_page/contact_details_page.dart';
+import 'package:whatsapp/screens/home/contact_page/contacts_page.dart';
+import 'package:whatsapp/screens/home/contact_page/edit_contact.dart';
+import 'package:whatsapp/screens/home/group_page/choose_contact_page.dart';
+import 'package:whatsapp/screens/home/group_page/delete_contact_page.dart';
+// import 'package:whatsapp/screens/home/dashbord.dart';
+import 'package:whatsapp/screens/home/group_page/group_page.dart';
+import 'package:whatsapp/screens/home/group_page/selected_contacts_page.dart';
+import 'package:whatsapp/screens/home/segmented.dart';
+import 'package:whatsapp/screens/nav-bar/chats/personal_chat.dart';
+import 'package:whatsapp/screens/nav-bar/chats/service_list_model.dart';
+import 'package:whatsapp/screens/nav-bar/index.dart';
+import 'package:whatsapp/screens/nav-bar/template/create_tremplate.dart';
+import 'package:whatsapp/screens/search_page/search_page.dart';
+import 'package:whatsapp/screens/nav-bar/template/nav_template_page.dart';
+import 'package:whatsapp/screens/send_message/contact_page/add_contact.dart';
+import 'package:whatsapp/screens/send_message/contact_page/selected_contacts.dart';
+import 'package:whatsapp/screens/send_message/group_page/add_group.dart';
+import 'package:whatsapp/screens/send_message/group_page/selected_group.dart';
+import 'package:whatsapp/screens/send_message/group_page/view_group.dart';
+import 'package:whatsapp/screens/send_message/send_message_page.dart';
+import 'package:whatsapp/screens/send_message/contact_page/view_contacts.dart';
+import 'package:whatsapp/screens/templates_page/template.dart';
+import 'package:whatsapp/screens/templates_page/templates_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,115 +39,55 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+        themeMode: ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        routes: <String, WidgetBuilder>{
+          '/': (BuildContext context) =>  HomeNav(),
+          // "/MainDashbord": (BuildContext context) => const HomeNav(),
+          "/templatePage": (BuildContext context) => const TemplatePage(),
+          "/chatPage": (BuildContext context) => const ChatPage(),
+          "/contactsPage": (BuildContext context) => const ContactsPage(),
+          "/groupPage": (BuildContext context) => const GroupPage(),
+          "/setButton": (BuildContext context) => const SetButton(),  
+          "/editContact": (BuildContext context) => const EditContact(),
+          "/addContactPage": (BuildContext context) => const AddContactPage(),
+          "/contactDetailsPage": (BuildContext context) =>
+              const ContactDetailsPage(),
+          "/deleteContactPage": (BuildContext context) =>
+              const DeleteContactPage(),
+          "/chooseContactPage": (BuildContext context) =>
+              const ChooseContactPage(),
+          "/selectedContactsPage": (BuildContext context) =>
+              const SelectedContactsPage(),
+          "/searchPage": (BuildContext context) => const SearchPage(),
+          "/templatesPage": (BuildContext context) => const TemplatesPage(),
+          "/templateCreat": (BuildContext context) => const TemplateCreat(),
+          "/messageReportPage": (BuildContext context) => const MessageReportPage(),
+          "/messageDetails": (BuildContext context) => const MessageDetails(),
+          "/personalChat": (BuildContext context) => const PersonalChat(),
+          "/serviceListModel": (BuildContext context) => const ServiceListModel(),
+          "/sendMessagePage": (BuildContext context) => const SendMessagePage(),
+          "/addContacts": (BuildContext context) => const AddContacts(),
+          "/selectContacts": (BuildContext context) => const SelectContacts(),
+          "/viewContacts": (BuildContext context) => const ViewContacts(),
+          "/addGroup": (BuildContext context) => const AddGroup(),
+          "/selectedGroup": (BuildContext context) => const SelectedGroup(),
+          "/viewGroup": (BuildContext context) => const ViewGroup(),
+          "/createTremplate": (BuildContext context) => const CreateTremplate(),
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
-  final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+
+
+
+
+
+
+        });
   }
 }
