@@ -234,17 +234,12 @@ class _MessageDetails extends State<MessageDetails>
                     SizedBox(
                       height: 370,
                       child: Column(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
                             height: 55,
-                            // width: double.infinity,
                             color: Colors.white,
                             child: TabBar(
-                              // tabAlignment: TabAlignment.start,
-                              controller:
-                                  _tabController, // Attach the controller here
+                              controller: _tabController,
                               padding: const EdgeInsets.only(
                                 top: 10,
                                 left: 10,
@@ -255,8 +250,7 @@ class _MessageDetails extends State<MessageDetails>
                               indicatorSize: TabBarIndicatorSize.label,
                               indicator: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                color: const Color(
-                                    0xFFFFE7E7), // Background color for selected tab
+                                color: const Color(0xFFFFE7E7),
                               ),
                               labelColor: const Color(0xFFF00000),
                               dividerColor: Colors.transparent,
@@ -268,8 +262,8 @@ class _MessageDetails extends State<MessageDetails>
                                       borderRadius: BorderRadius.circular(30),
                                       border: Border.all(
                                         color: _tabController.index == 0
-                                            ? Colors
-                                                .transparent // No border for selected tab
+                                            ? const Color(
+                                                0xFFFF0000) // Red border for selected tab
                                             : const Color(
                                                 0xFF167A0E), // Green border for unselected tab
                                         width: 1,
@@ -288,8 +282,8 @@ class _MessageDetails extends State<MessageDetails>
                                       borderRadius: BorderRadius.circular(30),
                                       border: Border.all(
                                         color: _tabController.index == 1
-                                            ? Colors
-                                                .transparent // No border for selected tab
+                                            ? const Color(
+                                                0xFFFF0000) // Red border for selected tab
                                             : const Color(
                                                 0xFF167A0E), // Green border for unselected tab
                                         width: 1,
@@ -314,8 +308,7 @@ class _MessageDetails extends State<MessageDetails>
                                     width: 1.0,
                                   )),
                               child: TabBarView(
-                                controller:
-                                    _tabController, // Attach controller here
+                                controller: _tabController,
                                 children: [
                                   ListView.separated(
                                     padding: const EdgeInsets.symmetric(
@@ -362,7 +355,7 @@ class _MessageDetails extends State<MessageDetails>
                           ),
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
